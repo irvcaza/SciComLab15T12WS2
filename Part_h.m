@@ -7,7 +7,7 @@ errors = [errors1 errors2 errors3];
 factors = errors (1:end-1,:)./ errors (2:end,:);
 
 %% Printing the factors
-disp('Factor of decreasement of the error when we halve the time step')
+disp('Factor of decreasement of the error when we halve the stepsize')
 fprintf('Delta-t \t Euler \t Heun \t I-Euler Adams \tAdams-L1 Adams-L2  \n')
 for i = 1:size(factors)
     fprintf('%4.4f \t \t',dt(i))

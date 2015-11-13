@@ -14,6 +14,7 @@ hold on
 IeulerApproxError = nan(1,n);%vector of errors
 for i=1:n   %for each test case....
     out = EulerImplicit(f,fp,y0,dt(i),tend);    %calculate the aproximation
+    ChechStability (f,fp,y0,dt(i),tend,'I_Eul',out) %calculate the stability 
     x= 0: dt(i):tend;   %grid to plot
     plot(x,out, 'color', b(i,:),'LineWidth',1.5);
     IeulerApproxError(i) = calcError(dt(i), out, fexact(x));    %save the error 
@@ -46,6 +47,7 @@ for i=1:n    %for each test case....
             rethrow(err);
         end
     end
+    ChechStability (f,fp,y0,dt(i),tend,'Ad_Mu',out) %calculate the stability 
     x= 0: dt(i):tend;
     plot(x,out, 'color', b(i,:),'LineWidth',1.5);
     AdamApproxError(i) = calcError(dt(i), out, fexact(x));%save the error 
@@ -66,7 +68,7 @@ errors2 = [IeulerApproxError' AdamApproxError'];
 
 fprintf('Delta-t \t I-Euler  \t Adams  \n')
 for i = 1:size(errors2)
-    fprintf('%4.3f \t \t',dt(i))
+    fprintf('%5.4f \t \t',dt(i))
     fprintf('%5.4E \t',errors2(i,:))
     fprintf('\n')
 end

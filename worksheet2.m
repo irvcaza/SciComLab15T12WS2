@@ -31,3 +31,4 @@ Part_f
 Part_h
 
 %% Part i. Stability
+% Please check the outputs and the file CheckStability.m

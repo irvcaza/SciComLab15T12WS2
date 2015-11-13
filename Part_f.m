@@ -25,6 +25,7 @@ for i=1:n   %for each test case....
             rethrow(err);
         end
     end
+    ChechStability (f,fp,y0,dt(i),tend,'Ad_Mu1',out) %calculate the stability 
     x= 0: dt(i):tend;   %grid to plot
     plot(x,out, 'color', b(i,:),'LineWidth',1.5);
     AdamApproxErrorL1(i) = calcError(dt(i), out, fexact(x));%save the error 
@@ -58,6 +59,7 @@ for i=1:n%for each test case....
             rethrow(err);
         end
     end
+    ChechStability (f,fp,y0,dt(i),tend,'Ad_Mu2',out) %calculate the stability 
     x= 0: dt(i):tend;%grid to plot
     plot(x,out, 'color', b(i,:),'LineWidth',1.5);
     AdamApproxErrorL2(i) = calcError(dt(i), out, fexact(x));%save the error 

@@ -12,6 +12,7 @@ hold on
 eulerApproxError = nan(1,n); %vector of errors
 for i=1:n %for each test case....
     out = Euler(f, y0, dt(i), tend) ;   %calculate the aproximation
+    ChechStability (f,1,y0,dt(i),tend,'E_Eul',out) %calculate the stability 
     x= 0: dt(i):tend; %grid to plot
     plot(x,out, 'color', b(i,:),'LineWidth',1.5);
     eulerApproxError(i) = calcError(dt(i), out, fexact(x)); %save the error 
@@ -31,6 +32,7 @@ hold on
 heunApproxError = nan(1,n); %vector of errors
 for i=1:n   %for each test case....
     out = Heun(f, y0, dt(i), tend) ;    %calculate the aproximation
+    ChechStability (f,1,y0,dt(i),tend,'Heun',out) %calculate the stability 
     x= 0: dt(i):tend;   %grid to plot
     plot(x,out, 'color', b(i,:),'LineWidth',1.5);
     heunApproxError(i) = calcError(dt(i), out, fexact(x));  %we save the error 
